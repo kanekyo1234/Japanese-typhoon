@@ -1,0 +1,43 @@
+{
+  "name": "japanese-typhoon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "react-scripts build",
+    "start": "react-scripts start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kanekyo1234/Japanese-typhoon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kanekyo1234/Japanese-typhoon/issues"
+  },
+  "homepage": "https://github.com/kanekyo1234/Japanese-typhoon/",
+  "dependencies": {
+    "bulma": "^0.9.1",
+    "d3": "^6.3.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "topojson": "^3.0.2"
+  },
+  "devDependencies": {
+    "react-scripts": "^4.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
