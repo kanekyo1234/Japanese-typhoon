@@ -9,6 +9,9 @@ const ChoroplethMap = ({ features }) => {
   const standardScale = 2000;
   const datas = Jsondata;
   let x1, x2, y1, y2;
+  const [isMouseOver, setIsMouseOver] = useState(false);
+  const [detailData, setDetailData] = useState("");
+  console.log(isMouseOver);
 
   const projection = d3
     .geoMercator()
@@ -17,28 +20,19 @@ const ChoroplethMap = ({ features }) => {
 
   const path = d3.geoPath().projection(projection);
 
-  const color = d3
-    .scaleLinear()
-    .domain(d3.extent(features, (feature) => feature.properties.value))
-    .range(["#ccc", "#f00"]);
+  // const color = d3
+  //   .scaleLinear()
+  //   .domain(d3.extent(features, (feature) => feature.properties.value))
+  //   .range(["#ccc", "#f00"]);
 
-  const drawLines = (i) => {
-    const x1 = projection([datas[i].経度, datas[i].緯度])[0];
-    const y1 = projection([datas[i].経度, datas[i].緯度])[1];
-    if (i === datas.length - 1) {
-      const x2 = projection([datas[i].経度, datas[i].緯度])[0];
-      const y2 = projection([datas[i].経度, datas[i].緯度])[1];
-      return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="black" />;
-    }
-    const x2 = projection([datas[i + 1].経度, datas[i + 1].緯度])[0];
-    const y2 = projection([datas[i + 1].経度, datas[i + 1].緯度])[1];
-    return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="black" />;
+  const detailDatas = (data) => {
+    console.log(data);
+    setIsMouseOver(true);
   };
   return (
     <svg width={width} height={height}>
       <g>
         {features.map((feature, i) => {
-          console.log(feature);
           return <path key={i} d={path(feature)} fill="green" stroke="white" />;
         })}
 
@@ -52,8 +46,28 @@ const ChoroplethMap = ({ features }) => {
           }
           x1 = projection([datas[i].経度, datas[i].緯度])[0];
           y1 = projection([datas[i].経度, datas[i].緯度])[1];
-          console.log(x1, x2, y1, y2);
-          return <line x1={x1} x2={x2} y1={y1} y2={y2} stroke="black"></line>;
+          return (
+            <line key={i} x1={x1} x2={x2} y1={y1} y2={y2} stroke="black"></line>
+          );
+        })}
+
+        {datas.map((data, i) => {
+          const x = projection([data.経度, data.緯度])[0];
+          const y = projection([data.経度, data.緯度])[1];
+
+          if (isMouseOver) {
+          }
+          return (
+            <circle
+              key={i}
+              cx={x}
+              cy={y}
+              r="3"
+              fill="black"
+              onMouseOver={() => detailDatas(data)}
+              onMouseLeave={() => setIsMouseOver(false)}
+            />
+          );
         })}
       </g>
     </svg>
