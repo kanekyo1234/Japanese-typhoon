@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import * as topojson from "topojson";
 import Jsondata from "./typhoon-example.json";
 
-const ChoroplethMap = ({ features }) => {
+const ChoroplethMap = ({ features, setMouseOverData }) => {
   const width = 960;
   const height = 2000;
   const standardScale = 1000;
@@ -31,7 +31,7 @@ const ChoroplethMap = ({ features }) => {
   //   .range(["#ccc", "#f00"]);
 
   const detailDatas = (data) => {
-    console.log(data);
+    setMouseOverData(data);
     setIsMouseOver(true);
   };
 
@@ -120,7 +120,7 @@ const ChoroplethMap = ({ features }) => {
   );
 };
 
-export const ChoroplethMapPage = () => {
+export const ChoroplethMapPage = ({ setMouseOverData }) => {
   const [features, setFeatures] = useState(null);
   useEffect(() => {
     (async () => {
@@ -133,5 +133,7 @@ export const ChoroplethMapPage = () => {
   if (features == null) {
     return <p>loading</p>;
   }
-  return <ChoroplethMap features={features} />;
+  return (
+    <ChoroplethMap features={features} setMouseOverData={setMouseOverData} />
+  );
 };

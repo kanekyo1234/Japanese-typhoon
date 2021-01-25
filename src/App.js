@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { ChoroplethMapPage } from "./ChoroplethMap";
 
 const App = () => {
+  const [mouseOverData, setMouseOverData] = useState("");
   return (
     // <Router>
     <body bgcolor="#e0ffff">
@@ -30,7 +31,8 @@ const App = () => {
 
                 <div className="field">
                   <label className="label">
-                    ここらへんで点の説明とかするかなー？
+                    <p>緯度:{mouseOverData.緯度}</p>
+                    <p>経度:{mouseOverData.経度}</p>
                   </label>
                 </div>
 
@@ -43,7 +45,7 @@ const App = () => {
               </div>
             </div>
             <div className="column">
-              <ChoroplethMapPage />
+              <ChoroplethMapPage setMouseOverData={setMouseOverData} />
             </div>
           </div>
         </section>
