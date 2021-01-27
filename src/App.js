@@ -4,6 +4,10 @@ import { ChoroplethMapPage } from "./ChoroplethMap";
 
 const App = () => {
   const [mouseOverData, setMouseOverData] = useState("");
+  const [mouseOverDataNumber, setMouseOverDataNumber] = useState(1);
+
+  console.log(mouseOverData);
+  console.log(mouseOverDataNumber);
   return (
     // <Router>
     <body bgcolor="#e0ffff">
@@ -31,8 +35,8 @@ const App = () => {
 
                 <div className="field">
                   <label className="label">
-                    <p>緯度:{mouseOverData.緯度}</p>
-                    <p>経度:{mouseOverData.経度}</p>
+                    {/* <p>緯度:{mouseOverData.緯度[mouseOverDataNumber]}</p>
+                    <p>経度:{mouseOverData.経度[mouseOverDataNumber]}</p> */}
                   </label>
                 </div>
 
@@ -45,7 +49,10 @@ const App = () => {
               </div>
             </div>
             <div className="column">
-              <ChoroplethMapPage setMouseOverData={setMouseOverData} />
+              <ChoroplethMapPage
+                setMouseOverData={setMouseOverData}
+                setMouseOverDataNumber={setMouseOverDataNumber}
+              />
             </div>
           </div>
         </section>
