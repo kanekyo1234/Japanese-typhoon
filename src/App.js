@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import { ChoroplethMapPage } from "./ChoroplethMap";
 
 const App = () => {
-  const [mouseOverData, setMouseOverData] = useState("");
-  const [mouseOverDataNumber, setMouseOverDataNumber] = useState(1);
+  const [mouseOverData, setMouseOverData] = useState({
+    台風名: "",
+    緯度: "",
+    経度: "",
+    年: "",
+  });
 
-  console.log(mouseOverData);
-  console.log(mouseOverDataNumber);
   return (
-    // <Router>
     <body bgcolor="#e0ffff">
       <section className="hero is-primary">
         <div className="hero-body">
@@ -28,31 +29,24 @@ const App = () => {
                 </b>
                 <div className="field">
                   <label className="label">台風何号の説明とか？</label>
-                  <div className="control">
-                    <p>23tyhg</p>
-                  </div>
                 </div>
 
                 <div className="field">
                   <label className="label">
-                    {/* <p>緯度:{mouseOverData.緯度[mouseOverDataNumber]}</p>
-                    <p>経度:{mouseOverData.経度[mouseOverDataNumber]}</p> */}
+                    <p>緯度:{mouseOverData.緯度}</p>
+                    <p>経度:{mouseOverData.経度}</p>
+                    <p>台風名:{mouseOverData.名前}</p>
+                    <p>年:{mouseOverData.年}</p>
                   </label>
                 </div>
 
                 <div className="field">
-                  <label className="label">。。。。</label>
-                  <div className="control">
-                    {/* <div className="select is-fullwidth"></div> */}
-                  </div>
+                  <div className="control"></div>
                 </div>
               </div>
             </div>
             <div className="column">
-              <ChoroplethMapPage
-                setMouseOverData={setMouseOverData}
-                setMouseOverDataNumber={setMouseOverDataNumber}
-              />
+              <ChoroplethMapPage setMouseOverData={setMouseOverData} />
             </div>
           </div>
         </section>

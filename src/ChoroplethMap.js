@@ -3,79 +3,21 @@ import * as d3 from "d3";
 import * as topojson from "topojson";
 import Jsondata from "./tyhoon-data.json";
 
-function App2() {
-  const [val, setVal] = React.useState(["js"]);
-
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    // change したのはいいとして、ON なのか OFF なのか判定する必要がある
-    if (val.includes(e.target.value)) {
-      // console.log()
-      // すでに含まれていれば OFF したと判断し、
-      // イベント発行元を除いた配列を set し直す
-      setVal(val.filter((item) => item !== e.target.value));
-    } else {
-      // そうでなければ ON と判断し、
-      // イベント発行元を末尾に加えた配列を set し直す
-      setVal([...val, e.target.value]);
-      // state は直接は編集できない
-      // つまり val.push(e.target.value) はNG ❌
-    }
-  };
-
-  return (
-    <>
-      <label>
-        <input
-          type="checkbox"
-          value="js"
-          onChange={handleChange}
-          checked={val.includes("js")}
-        />
-        JavaScript
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          value="python"
-          onChange={handleChange}
-          checked={val.includes("python")}
-        />
-        Python
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          value="java"
-          onChange={handleChange}
-          checked={val.includes("java")}
-        />
-        Java
-      </label>
-      <p>選択値：{val.join(", ")}</p>
-    </>
-  );
-}
-
-const ChoroplethMap = ({
-  features,
-  setMouseOverData,
-  setMouseOverDataNumber,
-}) => {
-  const width = 960;
+const ChoroplethMap = ({ features, setMouseOverData }) => {
+  const width = 1000;
   const height = 2000;
   const standardScale = 1000;
   const datas = Jsondata[0];
-  console.log(datas[2001]);
   let year = [];
   for (let i = 2001; i < 2021; i++) {
     year.push(i);
   }
   let x1, x2, y1, y2;
   const [isMouseOver, setIsMouseOver] = useState(false);
-  const [detailData, setDetailData] = useState("");
-  const [val, setVal] = useState([2001]);
-  console.log(val);
+  const [val, setVal] = useState([2001, 2002, 2003]);
+
+  // const [years, setYears] = useState(Array(20).fill(false));
+  const [selectedYear, setSelectedYear] = useState([]);
 
   const projection = d3
     .geoMercator()
@@ -84,38 +26,56 @@ const ChoroplethMap = ({
 
   const path = d3.geoPath().projection(projection);
 
-  // const color = d3
-  //   .scaleLinear()
-  //   .domain(d3.extent(features, (feature) => feature.properties.value))
-  //   .range(["#ccc", "#f00"]);
+  const detailDatas = (data, i) => {
+    console.log(data.台風名);
+    setMouseOverData({
+      名前: data.台風名,
+      緯度: data.緯度[i],
+      経度: data.経度[i],
+      年: data.年,
+    });
 
-  const detailDatas = (data, number) => {
-    setMouseOverData(data);
-    setMouseOverDataNumber(number);
     setIsMouseOver(true);
   };
 
   // チェックボックスの判定部分
-  const handleChange = (e) => {
-    console.log(e.target.value + "");
-    // change したのはいいとして、ON なのか OFF なのか判定する必要がある
-    if (val.includes(String(e.target.value))) {
-      // すでに含まれていれば OFF したと判断し、
-      // イベント発行元を除いた配列を set し直す
-      setVal(val.filter((item) => item !== e.target.value));
+  const handleChange = (i) => {
+    let value = i + 2001;
+    let index = selectedYear.indexOf(value);
+    console.log(index);
+    let newSelectedYear;
+    if (selectedYear.includes(value)) {
+      newSelectedYear = selectedYear.filter((item) => item !== value);
     } else {
-      // そうでなければ ON と判断し、
-      // イベント発行元を末尾に加えた配列を set し直す
-      setVal([...val, e.target.value]);
-      // state は直接は編集できない
-      // つまり val.push(e.target.value) はNG ❌
+      newSelectedYear = [...selectedYear, value];
     }
+    console.log(newSelectedYear);
+    setSelectedYear(newSelectedYear);
+    console.log(selectedYear);
+    // let newSelectedYears = years;
+    // newSelectedYears[i] = !newSelectedYears[i];
+    // setYears(newSelectedYears);
   };
 
   return (
     <div className="container">
-      <App2 />
       <div className="box">
+        <b>
+          {[...Array(20)].map((_, i) => {
+            return (
+              <label type="checkbox">
+                <input
+                  type="checkbox"
+                  value={i + 2001}
+                  onChange={() => handleChange(i)}
+                />
+                {i + 2001 + " "}
+              </label>
+            );
+          })}
+        </b>
+      </div>
+      {/* <div className="box">
         <b>
           {year.map((year, i) => {
             return (
@@ -124,14 +84,13 @@ const ChoroplethMap = ({
                   type="checkbox"
                   value={String(year)}
                   onChange={handleChange}
-                  checked={val.includes(year)}
                 />
                 {year + " "}
               </label>
             );
           })}
         </b>
-      </div>
+      </div> */}
 
       <svg width={width} height={height}>
         <g>
@@ -140,55 +99,52 @@ const ChoroplethMap = ({
               <path key={i} d={path(feature)} fill="green" stroke="white" />
             );
           })}
-          {/* 線引くコードはいったん置いといて、 */}
-          {/* {val.map((year, k) => {
-            datas[year].map((data, i) => {
-              if (i == 0) {
-                x2 = projection([data.経度, data.緯度])[0];
-                y2 = projection([data.経度, data.緯度])[1];
-              } else {
-                x2 = x1;
-                y2 = y1;
-              }
-              x1 = projection([datas[i].経度, datas[i].緯度])[0];
-              y1 = projection([datas[i].経度, datas[i].緯度])[1];
-              return (
-                <line
-                  key={i}
-                  x1={x1}
-                  x2={x2}
-                  y1={y1}
-                  y2={y2}
-                  stroke="black"
-                ></line>
-              );
+
+          {selectedYear.map((year, k) => {
+            return datas[year].map((data, index) => {
+              let len = data.経度.length;
+              return [...Array(len)].map((d, i) => {
+                if (i === 0) {
+                  x2 = projection([data.経度[i], data.緯度[i]])[0];
+                  y2 = projection([data.経度[i], data.緯度[i]])[1];
+                } else {
+                  x2 = x1;
+                  y2 = y1;
+                }
+                x1 = projection([data.経度[i], data.緯度[i]])[0];
+                y1 = projection([data.経度[i], data.緯度[i]])[1];
+                return (
+                  <line
+                    key={i}
+                    x1={x1}
+                    x2={x2}
+                    y1={y1}
+                    y2={y2}
+                    stroke="black"
+                  ></line>
+                );
+              });
             });
-          })} */}
+          })}
 
-          {val.map((year, k) => {
-            return datas[year].map((data, i) => {
-              // console.log(data);
-              return Array(data.経度.length)
-                .fill(0)
-                .map((a, m) => {
-                  const x = projection([data.経度[m], data.緯度[m]])[0];
-                  const y = projection([data.経度[m], data.緯度[m]])[1];
-                  // console.log(x, y);
-
-                  if (isMouseOver) {
-                  }
-                  return (
-                    <circle
-                      key={i}
-                      cx={x}
-                      cy={y}
-                      r="3"
-                      fill="black"
-                      onMouseOver={() => detailDatas(data, m)}
-                      onMouseLeave={() => setIsMouseOver(false)}
-                    />
-                  );
-                });
+          {selectedYear.map((year, index) => {
+            return datas[year].map((data, index) => {
+              let len = data.経度.length;
+              return [...Array(len)].map((d, i) => {
+                const x = projection([data.経度[i], data.緯度[i]])[0];
+                const y = projection([data.経度[i], data.緯度[i]])[1];
+                return (
+                  <circle
+                    key={i}
+                    cx={x}
+                    cy={y}
+                    r="3"
+                    fill="black"
+                    onMouseOver={() => detailDatas(data, i)}
+                    onMouseLeave={() => setIsMouseOver(false)}
+                  ></circle>
+                );
+              });
             });
           })}
         </g>
@@ -197,10 +153,7 @@ const ChoroplethMap = ({
   );
 };
 
-export const ChoroplethMapPage = ({
-  setMouseOverData,
-  setMouseOverDataNumber,
-}) => {
+export const ChoroplethMapPage = ({ setMouseOverData }) => {
   const [features, setFeatures] = useState(null);
   useEffect(() => {
     (async () => {
@@ -214,10 +167,6 @@ export const ChoroplethMapPage = ({
     return <p>loading</p>;
   }
   return (
-    <ChoroplethMap
-      features={features}
-      setMouseOverData={setMouseOverData}
-      setMouseOverDataNumber={setMouseOverDataNumber}
-    />
+    <ChoroplethMap features={features} setMouseOverData={setMouseOverData} />
   );
 };
