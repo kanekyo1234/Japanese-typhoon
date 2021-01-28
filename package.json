@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "start": "react-scripts start"
   },
@@ -17,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/kanekyo1234/Japanese-typhoon/issues"
   },
-  "homepage": "https://github.com/kanekyo1234/Japanese-typhoon/",
+  "homepage": "https://kanekyo1234.github.io/Japanese-typhoon/",
   "dependencies": {
     "bulma": "^0.9.1",
     "d3": "^6.3.1",
@@ -26,6 +27,7 @@
     "topojson": "^3.0.2"
   },
   "devDependencies": {
+    "gh-pages": "^3.1.0",
     "react-scripts": "^4.0.1"
   },
   "browserslist": {
