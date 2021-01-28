@@ -13,6 +13,8 @@ const App = () => {
     最大風速: "",
     号: "",
     年: "",
+    階級: "",
+    中心気圧: "",
   });
 
   return (
@@ -61,15 +63,19 @@ const App = () => {
                 </b>
                 <div className="field">
                   <label className="label">
-                    <p>緯度:{mouseOverData.緯度}</p>
-                    <p>経度:{mouseOverData.経度}</p>
-                    <p>台風名:{mouseOverData.名前}</p>
+                    <br />
                     <p>
                       {mouseOverData.月}月{mouseOverData.日}日{mouseOverData.時}
                       時
                     </p>
-                    <p>最大風速{mouseOverData.最大風速}</p>
-                    <p>号:{mouseOverData.号}</p>
+                    <p>台風名 : {mouseOverData.名前}</p>
+                    <p>緯度 : {mouseOverData.緯度}</p>
+                    <p>経度 : {mouseOverData.経度}</p>
+
+                    <p>最大風速 : {mouseOverData.最大風速}</p>
+                    <p>号 : {mouseOverData.号}号</p>
+                    <p>階級 : {mouseOverData.階級}</p>
+                    <p>中心気圧 : {mouseOverData.中心気圧}</p>
                   </label>
                 </div>
 
