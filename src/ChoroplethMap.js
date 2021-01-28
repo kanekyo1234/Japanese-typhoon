@@ -87,18 +87,26 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
 
   return (
     <div className="container">
-      <div className="box">
+      <div className="box" style={{ width: "1100px" }}>
         <b>
           {[...Array(19)].map((_, i) => {
+            let year = i + 2001;
             if (i !== 7) {
               return (
-                <label type="checkbox">
+                <label type="checkbox" style={{ borderColor: "red" }}>
                   <input
                     type="checkbox"
                     value={i + 2001}
                     onChange={() => handleChange(i)}
                   />
-                  {i + 2001 + " "}
+                  <span
+                    style={{
+                      textDecoration: "underline 3px",
+                      textDecorationColor: colorStyle[i],
+                    }}
+                  >
+                    {" " + year + " "}
+                  </span>
                 </label>
               );
             } else {
@@ -112,7 +120,7 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
         <g>
           {features.map((feature, i) => {
             return (
-              <path key={i} d={path(feature)} fill="green" stroke="white" />
+              <path key={i} d={path(feature)} fill="white" stroke="gray" />
             );
           })}
 
