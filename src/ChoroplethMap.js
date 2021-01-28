@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson";
-import Jsondata from "./tyhoon-data-landing.json";
+import Jsondata from "./tyhoon-data-landing2.json";
 
 const ChoroplethMap = ({ features, setMouseOverData }) => {
   const width = 1000;
