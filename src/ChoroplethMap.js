@@ -6,7 +6,7 @@ import Jsondata from "./tyhoon-data-landing.json";
 const ChoroplethMap = ({ features, setMouseOverData }) => {
   const width = 1000;
   const height = 1000;
-  const standardScale = 1000;
+  const standardScale = 1500;
   const datas = Jsondata[0];
   let year = [];
   for (let i = 2001; i < 2021; i++) {
@@ -16,10 +16,28 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
   }
   let x1, x2, y1, y2;
   const [isMouseOver, setIsMouseOver] = useState(false);
-  const [val, setVal] = useState([2001, 2002, 2003]);
-
-  // const [years, setYears] = useState(Array(20).fill(false));
   const [selectedYear, setSelectedYear] = useState([]);
+  const colorStyle = [
+    "#000000",
+    "#808080",
+    "#fffaf0",
+    "#00ffff",
+    "#0000ff",
+    "#00008b",
+    "#008080",
+    "",
+    "#008000",
+    "#00ff00",
+    " #deb887",
+    "#ffff00",
+    "#ffa500",
+    "#a0522d",
+    "#800000",
+    "#ff0000",
+    "#ff1493",
+    "#ff00ff",
+    "#800080",
+  ];
 
   const projection = d3
     .geoMercator()
@@ -43,8 +61,6 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
   // チェックボックスの判定部分
   const handleChange = (i) => {
     let value = i + 2001;
-    let index = selectedYear.indexOf(value);
-    console.log(index);
     let newSelectedYear;
     if (selectedYear.includes(value)) {
       newSelectedYear = selectedYear.filter((item) => item !== value);
@@ -54,16 +70,12 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
     console.log(newSelectedYear);
     setSelectedYear(newSelectedYear);
     console.log(selectedYear);
-    // let newSelectedYears = years;
-    // newSelectedYears[i] = !newSelectedYears[i];
-    // setYears(newSelectedYears);
   };
 
   //線のスタイルの変更の変数 一応まとめて作ったんだけどいらなかったら消して元に戻してください(´;ω;｀)
   const lineStyle = {
-    stroke: "black", //色
-    strokeWidth: "1.0px",
-    opacity: "0.5", //透度
+    strokeWidth: "2.0px",
+    // opacity: "", //透度
   };
 
   //円のスタイルの変更の変数
@@ -95,22 +107,6 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
           })}
         </b>
       </div>
-      {/* <div className="box">
-        <b>
-          {year.map((year, i) => {
-            return (
-              <label>
-                <input
-                  type="checkbox"
-                  value={String(year)}
-                  onChange={handleChange}
-                />
-                {year + " "}
-              </label>
-            );
-          })}
-        </b>
-      </div> */}
 
       <svg width={width} height={height}>
         <g>
@@ -143,6 +139,7 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
                     y1={y1}
                     y2={y2}
                     style={lineStyle}
+                    stroke={colorStyle[Number(year) - 2001]}
                   ></line>
                 );
               });
