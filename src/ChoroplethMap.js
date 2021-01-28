@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson";
-import Jsondata from "./tyhoon-data-landing2.json";
+import Jsondata from "./tyhoon-data-landing3.json";
 
 const ChoroplethMap = ({ features, setMouseOverData }) => {
   const width = 1000;
@@ -50,9 +50,13 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
     console.log(data.台風名);
     setMouseOverData({
       名前: data.台風名,
+      号: data.台風番号,
       緯度: data.緯度[i],
       経度: data.経度[i],
-      年: data.年,
+      日: data.日[i],
+      月: data.月[i],
+      時: data.時[i],
+      最大風速: data.最大風速[i],
     });
 
     setIsMouseOver(true);
