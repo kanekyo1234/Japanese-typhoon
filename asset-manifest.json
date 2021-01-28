@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/kanekyo1234/Japanese-typhoon/static/js/main.49c59899.chunk.js",
-    "main.js.map": "/kanekyo1234/Japanese-typhoon/static/js/main.49c59899.chunk.js.map",
-    "runtime-main.js": "/kanekyo1234/Japanese-typhoon/static/js/runtime-main.3153912f.js",
-    "runtime-main.js.map": "/kanekyo1234/Japanese-typhoon/static/js/runtime-main.3153912f.js.map",
-    "static/css/2.1f785abf.chunk.css": "/kanekyo1234/Japanese-typhoon/static/css/2.1f785abf.chunk.css",
-    "static/js/2.da8c5afb.chunk.js": "/kanekyo1234/Japanese-typhoon/static/js/2.da8c5afb.chunk.js",
-    "static/js/2.da8c5afb.chunk.js.map": "/kanekyo1234/Japanese-typhoon/static/js/2.da8c5afb.chunk.js.map",
-    "index.html": "/kanekyo1234/Japanese-typhoon/index.html",
-    "static/css/2.1f785abf.chunk.css.map": "/kanekyo1234/Japanese-typhoon/static/css/2.1f785abf.chunk.css.map",
-    "static/js/2.da8c5afb.chunk.js.LICENSE.txt": "/kanekyo1234/Japanese-typhoon/static/js/2.da8c5afb.chunk.js.LICENSE.txt"
+    "main.js": "/Japanese-typhoon/static/js/main.ac82d23d.chunk.js",
+    "main.js.map": "/Japanese-typhoon/static/js/main.ac82d23d.chunk.js.map",
+    "runtime-main.js": "/Japanese-typhoon/static/js/runtime-main.19e18e8b.js",
+    "runtime-main.js.map": "/Japanese-typhoon/static/js/runtime-main.19e18e8b.js.map",
+    "static/css/2.1f785abf.chunk.css": "/Japanese-typhoon/static/css/2.1f785abf.chunk.css",
+    "static/js/2.da8c5afb.chunk.js": "/Japanese-typhoon/static/js/2.da8c5afb.chunk.js",
+    "static/js/2.da8c5afb.chunk.js.map": "/Japanese-typhoon/static/js/2.da8c5afb.chunk.js.map",
+    "index.html": "/Japanese-typhoon/index.html",
+    "static/css/2.1f785abf.chunk.css.map": "/Japanese-typhoon/static/css/2.1f785abf.chunk.css.map",
+    "static/js/2.da8c5afb.chunk.js.LICENSE.txt": "/Japanese-typhoon/static/js/2.da8c5afb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3153912f.js",
+    "static/js/runtime-main.19e18e8b.js",
     "static/css/2.1f785abf.chunk.css",
     "static/js/2.da8c5afb.chunk.js",
-    "static/js/main.49c59899.chunk.js"
+    "static/js/main.ac82d23d.chunk.js"
   ]
 }
