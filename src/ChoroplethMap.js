@@ -50,6 +50,7 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
     console.log(data.台風名);
     setMouseOverData({
       名前: data.台風名,
+      年: data.年,
       号: data.台風番号,
       緯度: data.緯度[i],
       経度: data.経度[i],
@@ -57,6 +58,8 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
       月: data.月[i],
       時: data.時[i],
       最大風速: data.最大風速[i],
+      階級: data.階級[i],
+      中心気圧: data.中心気圧[i],
     });
 
     setIsMouseOver(true);
