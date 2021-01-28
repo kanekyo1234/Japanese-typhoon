@@ -21,16 +21,15 @@ const App = () => {
 
   const colorStyle = [
     "#000000",
-    "#808080",
-    "#fffaf0",
+    "#90A4AE",
+    "#CDDC39",
     "#00ffff",
     "#0000ff",
     "#00008b",
-    "#008080",
-    "",
-    "#008000",
     "#00ff00",
-    " #deb887",
+    "#008000",
+    "#008000",
+    "#deb887",
     "#ffff00",
     "#ffa500",
     "#a0522d",
@@ -39,6 +38,7 @@ const App = () => {
     "#ff1493",
     "#ff00ff",
     "#800080",
+    "#fd8072",
   ];
 
   return (
@@ -74,11 +74,15 @@ const App = () => {
         <section className="section">
           <div className="columns">
             <div className="column is-one-quarter">
-              <div className="box" style={{ height: "30%" }}>
+              <div className="box" style={{ height: "40%" }}>
                 <b>
                   <font size="5">CheckBox MENU</font>
                 </b>
-                {/* {ここでよろしく} */}
+                <CheckBox
+                  setSelectedYear={setSelectedYear}
+                  selectedYear={selectedYear}
+                  colorStyle={colorStyle}
+                />
               </div>
 
               <div className="box" style={{ height: "30%" }}>
@@ -109,11 +113,6 @@ const App = () => {
               </div>
             </div>
             <div className="column">
-              <CheckBox
-                setSelectedYear={setSelectedYear}
-                selectedYear={selectedYear}
-                colorStyle={colorStyle}
-              />
               <ChoroplethMapPage
                 setMouseOverData={setMouseOverData}
                 selectedYear={selectedYear}
