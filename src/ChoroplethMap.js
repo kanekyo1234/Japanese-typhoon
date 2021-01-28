@@ -5,7 +5,7 @@ import Jsondata from "./tyhoon-data-landing.json";
 
 const ChoroplethMap = ({ features, setMouseOverData }) => {
   const width = 1000;
-  const height = 2000;
+  const height = 1000;
   const standardScale = 1000;
   const datas = Jsondata[0];
   let year = [];
@@ -59,6 +59,20 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
     // setYears(newSelectedYears);
   };
 
+  //線のスタイルの変更の変数 一応まとめて作ったんだけどいらなかったら消して元に戻してください(´;ω;｀)
+  const lineStyle = {
+    stroke: "black", //色
+    strokeWidth: "1.0px",
+    opacity: "0.5", //透度
+  };
+
+  //円のスタイルの変更の変数
+  const circleStyle = {
+    r: "3",
+    fill: "black",
+    opacity: "0.5", //透度
+  };
+
   return (
     <div className="container">
       <div className="box">
@@ -106,6 +120,8 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
             );
           })}
 
+          {/* ここから線の描画 */}
+
           {selectedYear.map((year, k) => {
             return datas[year].map((data, index) => {
               let len = data.経度.length;
@@ -126,12 +142,14 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
                     x2={x2}
                     y1={y1}
                     y2={y2}
-                    stroke="black"
+                    style={lineStyle}
                   ></line>
                 );
               });
             });
           })}
+
+          {/* ここからは点の描画 */}
 
           {selectedYear.map((year, index) => {
             return datas[year].map((data, index) => {
@@ -144,8 +162,7 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
                     key={i}
                     cx={x}
                     cy={y}
-                    r="3"
-                    fill="black"
+                    style={circleStyle}
                     onMouseOver={() => detailDatas(data, i)}
                     onMouseLeave={() => setIsMouseOver(false)}
                   ></circle>

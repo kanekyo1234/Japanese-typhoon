@@ -51,6 +51,11 @@ const App = () => {
           </div>
         </section>
       </div>
+      <footer className="footer">
+        <div className="content has-text-centered">
+          <p>&copy; 2020 Tatsumi Ito , Yuki Hatasa , Kyohei Kaneko</p>
+        </div>
+      </footer>
     </body>
   );
 };
