@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/kanekyo1234/Japanese-typhoon/static/js/main.49c59899.chunk.js",
+    "main.js.map": "/kanekyo1234/Japanese-typhoon/static/js/main.49c59899.chunk.js.map",
+    "runtime-main.js": "/kanekyo1234/Japanese-typhoon/static/js/runtime-main.3153912f.js",
+    "runtime-main.js.map": "/kanekyo1234/Japanese-typhoon/static/js/runtime-main.3153912f.js.map",
+    "static/css/2.1f785abf.chunk.css": "/kanekyo1234/Japanese-typhoon/static/css/2.1f785abf.chunk.css",
+    "static/js/2.da8c5afb.chunk.js": "/kanekyo1234/Japanese-typhoon/static/js/2.da8c5afb.chunk.js",
+    "static/js/2.da8c5afb.chunk.js.map": "/kanekyo1234/Japanese-typhoon/static/js/2.da8c5afb.chunk.js.map",
+    "index.html": "/kanekyo1234/Japanese-typhoon/index.html",
+    "static/css/2.1f785abf.chunk.css.map": "/kanekyo1234/Japanese-typhoon/static/css/2.1f785abf.chunk.css.map",
+    "static/js/2.da8c5afb.chunk.js.LICENSE.txt": "/kanekyo1234/Japanese-typhoon/static/js/2.da8c5afb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3153912f.js",
+    "static/css/2.1f785abf.chunk.css",
+    "static/js/2.da8c5afb.chunk.js",
+    "static/js/main.49c59899.chunk.js"
+  ]
+}
