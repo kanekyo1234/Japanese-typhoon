@@ -14,7 +14,7 @@ const App = () => {
     <body bgcolor="#e0ffff">
       <section className="hero is-primary">
         <div className="hero-body">
-          <h1 className="title">Japanese-typhoon</h1>
+          <h1 className="title">Japanese-typhoon </h1>
         </div>
       </section>
 
