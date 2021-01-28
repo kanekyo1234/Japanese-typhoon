@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-
 import { ChoroplethMapPage } from "./ChoroplethMap";
+import CheckBox from "./CheckBox";
+import { color } from "d3";
 
 const App = () => {
+  const [selectedYear, setSelectedYear] = useState([]);
   const [mouseOverData, setMouseOverData] = useState({
     台風名: "",
     緯度: "",
@@ -14,6 +16,28 @@ const App = () => {
     号: "",
     年: "",
   });
+
+  const colorStyle = [
+    "#000000",
+    "#808080",
+    "#fffaf0",
+    "#00ffff",
+    "#0000ff",
+    "#00008b",
+    "#008080",
+    "",
+    "#008000",
+    "#00ff00",
+    " #deb887",
+    "#ffff00",
+    "#ffa500",
+    "#a0522d",
+    "#800000",
+    "#ff0000",
+    "#ff1493",
+    "#ff00ff",
+    "#800080",
+  ];
 
   return (
     <body bgcolor="#e0ffff">
@@ -79,7 +103,16 @@ const App = () => {
               </div>
             </div>
             <div className="column">
-              <ChoroplethMapPage setMouseOverData={setMouseOverData} />
+              <CheckBox
+                setSelectedYear={setSelectedYear}
+                selectedYear={selectedYear}
+                colorStyle={colorStyle}
+              />
+              <ChoroplethMapPage
+                setMouseOverData={setMouseOverData}
+                selectedYear={selectedYear}
+                colorStyle={colorStyle}
+              />
             </div>
           </div>
         </section>
