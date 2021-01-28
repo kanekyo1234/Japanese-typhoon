@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson";
-import Jsondata from "./tyhoon-data.json";
+import Jsondata from "./tyhoon-data-landing.json";
 
 const ChoroplethMap = ({ features, setMouseOverData }) => {
   const width = 1000;
@@ -10,7 +10,9 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
   const datas = Jsondata[0];
   let year = [];
   for (let i = 2001; i < 2021; i++) {
-    year.push(i);
+    if (i != 2008) {
+      year.push(i);
+    }
   }
   let x1, x2, y1, y2;
   const [isMouseOver, setIsMouseOver] = useState(false);
@@ -61,17 +63,21 @@ const ChoroplethMap = ({ features, setMouseOverData }) => {
     <div className="container">
       <div className="box">
         <b>
-          {[...Array(20)].map((_, i) => {
-            return (
-              <label type="checkbox">
-                <input
-                  type="checkbox"
-                  value={i + 2001}
-                  onChange={() => handleChange(i)}
-                />
-                {i + 2001 + " "}
-              </label>
-            );
+          {[...Array(19)].map((_, i) => {
+            if (i !== 7) {
+              return (
+                <label type="checkbox">
+                  <input
+                    type="checkbox"
+                    value={i + 2001}
+                    onChange={() => handleChange(i)}
+                  />
+                  {i + 2001 + " "}
+                </label>
+              );
+            } else {
+              return;
+            }
           })}
         </b>
       </div>

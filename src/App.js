@@ -23,12 +23,12 @@ const App = () => {
           <div className="columns">
             <div className="column is-one-quarter">
               {/*プルダウンメニュー 画面3分の1*/}
-              <div className="box" style={{ height: "100%" }}>
+              <div className="box" style={{ height: "50%" }}>
                 <b>
-                  <font size="5">Filter memu</font>
+                  <font size="5">Memu</font>
                 </b>
                 <div className="field">
-                  <label className="label">台風何号の説明とか？</label>
+                  <label className="label">2008,2020は上陸なし</label>
                 </div>
 
                 <div className="field">
