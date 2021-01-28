@@ -19,8 +19,8 @@ const App = () => {
 
   const colorStyle = [
     "#000000",
-    "#808080",
-    "#fffaf0",
+    "#90A4AE",
+    "#CDDC39",
     "#00ffff",
     "#0000ff",
     "#00008b",
