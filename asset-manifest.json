@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/Japanese-typhoon/static/js/main.ac82d23d.chunk.js",
-    "main.js.map": "/Japanese-typhoon/static/js/main.ac82d23d.chunk.js.map",
+    "main.js": "/Japanese-typhoon/static/js/main.b6262429.chunk.js",
+    "main.js.map": "/Japanese-typhoon/static/js/main.b6262429.chunk.js.map",
     "runtime-main.js": "/Japanese-typhoon/static/js/runtime-main.19e18e8b.js",
     "runtime-main.js.map": "/Japanese-typhoon/static/js/runtime-main.19e18e8b.js.map",
     "static/css/2.1f785abf.chunk.css": "/Japanese-typhoon/static/css/2.1f785abf.chunk.css",
-    "static/js/2.da8c5afb.chunk.js": "/Japanese-typhoon/static/js/2.da8c5afb.chunk.js",
-    "static/js/2.da8c5afb.chunk.js.map": "/Japanese-typhoon/static/js/2.da8c5afb.chunk.js.map",
+    "static/js/2.89359f97.chunk.js": "/Japanese-typhoon/static/js/2.89359f97.chunk.js",
+    "static/js/2.89359f97.chunk.js.map": "/Japanese-typhoon/static/js/2.89359f97.chunk.js.map",
     "index.html": "/Japanese-typhoon/index.html",
     "static/css/2.1f785abf.chunk.css.map": "/Japanese-typhoon/static/css/2.1f785abf.chunk.css.map",
-    "static/js/2.da8c5afb.chunk.js.LICENSE.txt": "/Japanese-typhoon/static/js/2.da8c5afb.chunk.js.LICENSE.txt"
+    "static/js/2.89359f97.chunk.js.LICENSE.txt": "/Japanese-typhoon/static/js/2.89359f97.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.19e18e8b.js",
     "static/css/2.1f785abf.chunk.css",
-    "static/js/2.da8c5afb.chunk.js",
-    "static/js/main.ac82d23d.chunk.js"
+    "static/js/2.89359f97.chunk.js",
+    "static/js/main.b6262429.chunk.js"
   ]
 }
